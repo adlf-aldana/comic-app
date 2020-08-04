@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HeroesService } from 'src/app/services/heroesService/heroes-service.service';
+import { ActivatedRoute } from '@angular/router';
+import { HeroesInterfaz } from 'src/app/interfaz/heroes-interfaz';
 
 @Component({
   selector: 'app-heroe',
@@ -6,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroeComponent implements OnInit {
 
-  constructor() { }
+  heroe: HeroesInterfaz;
+  constructor(
+    private _heroesService: HeroesService,
+    private _activatedRoute: ActivatedRoute
+  ) {
+    this._activatedRoute.params.subscribe(params => {
+      this.heroe = _heroesService.getHeroe(params['id']);
+      console.log(this.heroe.nombre);
+      
+    })
+  }
 
   ngOnInit(): void {
   }
