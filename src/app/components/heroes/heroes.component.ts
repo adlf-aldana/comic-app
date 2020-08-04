@@ -12,12 +12,10 @@ export class HeroesComponent implements OnInit {
 
   heroes: HeroesInterfaz[] = [];
 
-  constructor(private heroesService: HeroesService) { }
+  constructor(private _heroesService: HeroesService) { }
 
   ngOnInit(): void {
-    this.heroes = this.heroesService.getHeroes();
-    console.log(this.heroes);
-
+    this.heroes = this._heroesService.getHeroes();
   }
 
 }

@@ -59,7 +59,6 @@ export class HeroesService {
   ]
 
   constructor() {
-    console.log('servicio corriendo!');
   }
 
   getHeroes() {
