@@ -58,15 +58,45 @@ export class HeroesService {
     }
   ]
 
+  i: number = 0;
   constructor() {
+    this.i = 1;
   }
 
-  getHeroes() {
+  getHeroes(): HeroesInterfaz[] {
     return this.heroes;
   }
 
   getHeroe(idx: number) {
     return this.heroes[idx];
+  }
+
+  // buscarHeroes(termino: string): HeroesInterfaz[] {
+  //   let heroesArr: HeroesInterfaz[] = [];
+  //   termino = termino.toLowerCase();
+
+  //   for (let heroe of this.heroes) {
+  //     let nombre = heroe.nombre.toLowerCase();
+
+  //     if (nombre.indexOf(termino)) {
+  //       heroesArr.push(heroe);
+  //     }
+  //   }
+
+  //   return heroesArr;
+  // }
+
+  // buscarHeroes(termino: string): HeroesInterfaz[] {
+  buscarHeroes(termino: string): HeroesInterfaz[] {
+    let heroeencontrado: HeroesInterfaz[] = [];
+    let comheroe = termino.toLowerCase();
+
+    this.heroes.forEach(e => {
+      if (e.nombre.toLowerCase().indexOf(comheroe) >= 0) {
+        heroeencontrado.push(e);
+      }
+    });
+    return heroeencontrado;
   }
 }
 

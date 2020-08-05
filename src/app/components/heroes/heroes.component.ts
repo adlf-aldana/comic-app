@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroesService } from 'src/app/services/heroesService/heroes-service.service';
 import { HeroesInterfaz } from '../../interfaz/heroes-interfaz';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
@@ -11,11 +12,39 @@ import { HeroesInterfaz } from '../../interfaz/heroes-interfaz';
 export class HeroesComponent implements OnInit {
 
   heroes: HeroesInterfaz[] = [];
+  nombreBusquedaHeroe: string
 
-  constructor(private _heroesService: HeroesService) { }
+
+  constructor(private _heroesService: HeroesService,
+    private _activatedRouter: ActivatedRoute) {
+
+  }
 
   ngOnInit(): void {
-    this.heroes = this._heroesService.getHeroes();
+    this._activatedRouter.params.subscribe(params => {
+      
+      if (params['nombre'] != null) {
+        this.nombreBusquedaHeroe = params['nombre']
+        this.heroes = this._heroesService.buscarHeroes(params['nombre']);
+      }else{
+        this.heroes = this._heroesService.getHeroes();
+      }
+    });
+
+    // console.log(this.nombreBusquedaHeroe);
+    
+    // if (this.nombreBusquedaHeroe != undefined)
+    //   this.heroes = this._heroesService.getHeroes();
   }
+
+
+
+  // heroes: HeroesInterfaz[] = [];
+
+  // constructor(private _heroesService: HeroesService) { }
+
+  // ngOnInit(): void {
+  //   this.heroes = this._heroesService.getHeroes();
+  // }
 
 }
