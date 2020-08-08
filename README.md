@@ -1,8 +1,8 @@
-# Description Superheros
+# Descripcion de algunos superheroes MARVEL y DC
 
 ------------
 
->  Ver demostración: [Superheros](https://angular-superheros.netlify.app/heroes)
+>  Ver demostración: [Superheroes](https://angular-superheros.netlify.app/heroes)
 
 Proyecto descripcion de algunos superheroes, escrito en **Angular**.
 
