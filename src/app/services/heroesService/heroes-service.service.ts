@@ -93,6 +93,7 @@ export class HeroesService {
 
     this.heroes.forEach(e => {
       if (e.nombre.toLowerCase().indexOf(comheroe) >= 0) {
+        e.index = this.heroes.indexOf(e);
         heroeencontrado.push(e);
       }
     });

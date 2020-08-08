@@ -3,5 +3,6 @@ export interface HeroesInterfaz {
     bio: string,
     img: string,
     aparicion: string,
-    casa: string
+    casa: string,
+    index ?: number
 }

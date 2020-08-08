@@ -39,7 +39,11 @@ export class HeroesComponent implements OnInit {
   }
 
   verHeroe(index: number) {
-    this._router.navigate(['/heroe', index])
+
+    if (this.heroes[0].index)
+      this._router.navigate(['/heroe', this.heroes[0].index])
+    else
+      this._router.navigate(['/heroe', index])
   }
 
 
